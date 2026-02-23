@@ -1,0 +1,18 @@
+---
+title: AAA Game Development Infrastructure Notes
+description: Build farms, Perforce realities, artifact storage, caching, and environment isolation for modern AAA pipelines.
+---
+
+# AAA Game Development Infrastructure Notes
+
+## What this covers
+- Build/cook/package workflows and why they fail
+- Artifact storage patterns (S3, retention, lifecycle policies)
+- Perforce vs Git for large binary assets (and branch strategy implications)
+- Remote build agents (ephemeral runners, autoscaling)
+- Caching (derived data cache concepts, CI acceleration)
+- Observability for pipelines (logs, metrics, alerting)
+- Cost controls (spot where safe, retention limits, build concurrency)
+
+## Why this belongs in my DevOps portfolio
+Bethesda DevOps supports both **development environments** and **production environments**. Studio pipelines need reliability, throughput, and visibility just like production services.

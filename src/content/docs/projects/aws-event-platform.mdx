@@ -1,0 +1,47 @@
+---
+title: AWS Event-Driven Microservice Platform
+description: API Gateway → Lambda (Python) → SQS → ECS Fargate (Docker) → RDS Postgres with CloudWatch alarms and runbooks.
+---
+
+# AWS Event-Driven Microservice Platform
+
+## Why I built this
+Bethesda's DevOps role focuses on **running AWS infrastructure** and supporting **distributed systems** with strong operational habits (on-call, alerting trends, root cause analysis). This project demonstrates those patterns in a compact, production-inspired system.
+
+## Architecture
+**API Gateway** → **Lambda (Python)** → **SQS** → **ECS Fargate worker (Docker)** → **RDS Postgres**  
+Add-ons:
+- **DLQ** for poison messages
+- **Secrets Manager** for DB credentials
+- **CloudWatch logs + alarms** for queue depth and error rates
+
+> Include a diagram image here: `/docs/screenshots/aws-event-platform-diagram.png`
+
+## Key design decisions
+- **Queue decoupling (SQS):** isolates ingestion from processing and smooths bursts.
+- **Worker on ECS Fargate:** containerized Linux workload without managing hosts.
+- **Idempotency:** safe retries; avoid duplicate writes.
+- **Least-privilege IAM:** separate roles for Lambda and ECS tasks.
+- **Operational readiness:** alarms + a runbook for common incidents.
+
+## Reliability & on-call behaviors
+Alarm examples:
+- SQS queue depth above threshold
+- Lambda errors elevated
+- ECS tasks restarting unexpectedly
+
+Runbook excerpts:
+- First checks (CloudWatch logs, last deploy, IAM changes)
+- Typical causes (permissions drift, bad payloads, DB connectivity)
+- Recovery steps and validation checks
+
+## Security basics
+- DB credentials stored in **Secrets Manager**
+- RDS in private subnet (security group scoped)
+- IAM roles restricted to required actions only
+
+## Repos / artifacts
+- GitHub repo: [link]
+- Terraform: [link]
+- Runbook: [link]
+- Screenshots: [link]

@@ -1,0 +1,24 @@
+---
+title: Terraform AWS Stack (VPC + ECS)
+description: Infrastructure as code for VPC networking, ECS services, security groups, and IAM roles.
+---
+
+# Terraform AWS Stack (VPC + ECS)
+
+## Goal
+Provision AWS infrastructure with reproducible IaC: networking, security boundaries, and an ECS deployment target.
+
+## What it includes
+- VPC with public/private subnets
+- Security groups (least access)
+- ECS cluster + service
+- ALB (if enabled)
+- IAM roles for tasks and deployments
+
+## Notes
+- Clean variable interface (region, CIDRs, desired count)
+- "Destroy-safe" patterns for learning environments
+- Clear outputs (ALB URL, cluster name, role ARNs)
+
+## Repo / module
+- Terraform code: [link]

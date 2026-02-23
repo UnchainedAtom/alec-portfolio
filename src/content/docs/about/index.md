@@ -1,11 +1,17 @@
 ---
 title: About
+description: DevOps engineer with distributed systems experience, Linux/Python automation, and production on-call mindset.
 ---
 
-DevOps / Reliability Engineer focused on stable environments and transparent systems.
+# About
 
-I enjoy diagnosing failures, improving observability, and building automation that removes friction from development workflows.
+I'm a DevOps / Data Engineer with production experience supporting distributed data exchange systems and cloud platforms. I'm strongest in **Linux**, **Python**, **observability**, and building reliable systems that are easy to operate.
 
-Background includes distributed services, monitoring, and on-call support across production systems.
+## Focus areas
+- AWS: ECS Fargate, IAM, CloudWatch, SQS, RDS, Terraform, CI/CD
+- Linux: debugging, systemd, networking basics, logs, resource triage
+- Python: services, automation, tooling, reliable job processing
+- Operations: on-call readiness, alert tuning, root cause analysis, runbooks
 
-San Antonio, Texas
+## Cloud background
+Most of my production experience is in Azure ecosystems. I built AWS portfolio labs to demonstrate multi-cloud fluency and equivalent system design patterns.

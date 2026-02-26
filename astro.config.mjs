@@ -21,6 +21,7 @@ export default defineConfig({
           ],
         },
         { label: 'About', link: '/about/' },
+        { label: 'Creative', link: '/creative/' },
       ],
       customCss: ['./src/styles/neuronet-theme.css'],
     }),

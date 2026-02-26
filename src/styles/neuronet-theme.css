@@ -305,3 +305,31 @@ header a {
   color: var(--sl-color-white) !important;
   text-shadow: 0 0 8px var(--neon-cyan);
 }
+
+/* Profile image styling */
+img {
+  border: 2px solid var(--neon-red);
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(211, 55, 55, 0.4);
+  transition: all 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+img:hover {
+  box-shadow: 0 0 24px rgba(211, 55, 55, 0.6), 0 0 12px var(--neon-cyan);
+}
+
+/* Profile image on home page - left aligned, above text */
+img[alt="Alec Profile"] {
+  max-width: 200px;
+  margin: 0 0 2em 0;
+  display: block;
+}
+
+/* Profile image on about page - float right */
+img[alt="Alec Estrada"] {
+  max-width: 300px;
+  margin: 0 0 1.5em 1.5em;
+  float: right;
+}

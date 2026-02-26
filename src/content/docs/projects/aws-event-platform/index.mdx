@@ -7,23 +7,73 @@ description: Async job ingestion + worker processing with durability and failure
 
 ## Overview
 
-A cloud-native asynchronous processing platform built on AWS.
+An event-driven asynchronous processing system built on AWS to explore reliability patterns used in production microservice architectures.
 
-Incoming client requests are validated by an API Gateway + Lambda ingestion layer. Jobs are enqueued into an SQS queue with a dead-letter queue (DLQ) configured. Containerized Python workers deployed on AWS ECS Fargate poll the queue, process jobs, and emit structured logs to CloudWatch.
+Requests are accepted via API Gateway and validated in a Lambda ingestion layer. Jobs are enqueued to SQS with a dead-letter queue configured for failure isolation. Containerized Python workers deployed on ECS Fargate poll the queue, process jobs, and emit logs to CloudWatch.
 
-This architecture emphasizes reliability with:
-- at-least-once delivery semantics,
-- visibility timeout-safe processing,
-- poison message quarantine in a DLQ,
-- and clear observability into success or failure paths.
+## Architecture
+![AWS Architecture Diagram](/images/aws-architecture.png)
 
-## Tech Stack
-- AWS: API Gateway, Lambda, SQS, DLQ, ECS Fargate, ECR, CloudWatch
-- Python, boto3, Docker
-- CI/CD (image build + deployment pipeline)
+Client  
+→ API Gateway  
+→ Lambda (validation + enqueue)  
+→ SQS (with DLQ)  
+→ ECS Fargate worker  
+→ CloudWatch Logs  
 
-## Highlights
-- Designed and deployed resilient AWS infrastructure for job queuing and background workers
-- Workers implement idempotency and safe delete-after-success
-- Operational logs and metrics centralized in CloudWatch for troubleshooting
-- Demonstrates infra-level responsibility expected in real DevOps workflows
+## Deployment (ECS Fargate)
+
+![ECS Running Service](/images/ecs-running.png)
+
+- Docker image built locally
+- Image pushed to Amazon ECR
+- ECS Fargate service deployed with task role separation
+- Environment variables injected securely
+- Long polling enabled for worker efficiency
+
+## Observability & Runtime Behavior
+
+![CloudWatch Logs](/images/cloudwatch-logs.png)
+
+Workers implement:
+
+- Visibility-timeout-safe processing
+- Delete-after-success pattern
+- At-least-once delivery semantics
+- Idempotency key generation
+- Dead-letter queue isolation for poison messages
+
+Logs are streamed to CloudWatch for operational debugging.
+
+## Technical Stack
+
+**AWS**
+- API Gateway
+- Lambda
+- SQS + DLQ
+- ECS Fargate
+- ECR
+- CloudWatch
+- IAM (role separation)
+
+**Application**
+- Python 3.x
+- boto3
+- Docker
+
+## Operational Considerations
+
+- Queue visibility timeout configured to prevent duplicate processing
+- DLQ used to isolate failed messages after max receive attempts
+- IAM roles separated for Lambda and ECS tasks
+- Containerized worker supports horizontal scaling via ECS service scaling
+
+## What It Demonstrates
+
+- At-least-once delivery semantics
+- Visibility timeout–safe worker processing
+- Delete-after-success pattern
+- Dead-letter queue isolation for poison messages
+- IAM role separation between Lambda and ECS tasks
+- Docker image build + ECR publishing
+- Operational debugging through CloudWatch logs

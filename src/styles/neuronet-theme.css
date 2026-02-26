@@ -1,0 +1,307 @@
+/* Neuronet-inspired cyberpunk theme for portfolio */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  /* Color palette from Neuronet */
+  --sl-color-bg-primary: #0e0401;
+  --sl-color-bg-secondary: #1a0e0e;
+  --sl-color-white: #fafcfc;
+  --sl-color-gray-1: #f5f7f8;
+  --sl-color-gray-2: #e2fff3;
+  
+  /* Neon accent colors */
+  --neon-red: #d33737;
+  --neon-pink: #F6050E;
+  --neon-cyan: #93e4e2;
+  --neon-light-cyan: #cbf8ee;
+  
+  /* Text styles */
+  --sl-text-accent: var(--neon-cyan);
+}
+
+html {
+  background-color: var(--sl-color-bg-primary) !important;
+}
+
+body {
+  color: var(--sl-color-white) !important;
+  background-color: var(--sl-color-bg-primary) !important;
+  text-shadow: 0px 0px 6px rgba(245, 247, 248, 0.3);
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+/* CRT effect overlay - subtle */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.12;
+  }
+  5% {
+    opacity: 0.18;
+  }
+  10% {
+    opacity: 0.10;
+  }
+  15% {
+    opacity: 0.22;
+  }
+  20% {
+    opacity: 0.08;
+  }
+  25% {
+    opacity: 0.20;
+  }
+  30% {
+    opacity: 0.16;
+  }
+  35% {
+    opacity: 0.17;
+  }
+  40% {
+    opacity: 0.12;
+  }
+  45% {
+    opacity: 0.21;
+  }
+  50% {
+    opacity: 0.24;
+  }
+  55% {
+    opacity: 0.06;
+  }
+  60% {
+    opacity: 0.10;
+  }
+  65% {
+    opacity: 0.18;
+  }
+  70% {
+    opacity: 0.13;
+  }
+  75% {
+    opacity: 0.09;
+  }
+  80% {
+    opacity: 0.18;
+  }
+  85% {
+    opacity: 0.17;
+  }
+  90% {
+    opacity: 0.16;
+  }
+  95% {
+    opacity: 0.09;
+  }
+  100% {
+    opacity: 0.06;
+  }
+}
+
+/* Starlight specific overrides */
+:root {
+  --sl-color-accent: var(--neon-cyan);
+  --sl-color-error: var(--neon-pink);
+  --sl-color-success: var(--neon-light-cyan);
+  --sl-color-bg-nav: var(--sl-color-bg-secondary);
+  --sl-color-gray-5: var(--sl-color-bg-secondary);
+  --sl-color-gray-6: var(--sl-color-bg-primary);
+}
+
+/* Sidebar - force dark theme */
+.sidebar {
+  background-color: var(--sl-color-bg-secondary) !important;
+}
+
+[data-sidebar] {
+  background-color: var(--sl-color-bg-secondary) !important;
+  border-right: 2px solid var(--neon-red) !important;
+  box-shadow: -4px 0 12px rgba(211, 55, 55, 0.3);
+}
+
+.sidebar-content {
+  background-color: var(--sl-color-bg-secondary) !important;
+}
+
+[data-sidebar] a {
+  color: var(--sl-color-white) !important;
+}
+
+[data-sidebar] a:hover {
+  color: var(--neon-light-cyan) !important;
+  text-shadow: 0 0 10px var(--neon-cyan);
+  background-color: rgba(147, 228, 226, 0.08) !important;
+}
+
+/* Force selected item styling */
+[data-sidebar] a[aria-current='page'],
+[data-sidebar] [aria-current='page'] > a,
+[data-sidebar] .active,
+.sidebar a.active,
+.sidebar [aria-current='page'] {
+  background-color: var(--neon-red) !important;
+  color: var(--sl-color-white) !important;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.5) !important;
+  border-left: none !important;
+  font-weight: bold !important;
+}
+
+/* Main content styling */
+main {
+  background-color: var(--sl-color-bg-primary) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--sl-color-white);
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+h1 {
+  border-bottom: 2px solid var(--neon-red);
+  padding-bottom: 0.75em;
+  padding-top: 0.25em;
+  margin-bottom: 1em;
+  display: inline-block;
+  width: auto;
+}
+
+/* Links */
+a {
+  color: var(--neon-cyan) !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-light-cyan) !important;
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Code blocks */
+pre {
+  background-color: rgba(26, 14, 14, 0.8) !important;
+  border: 1px solid var(--neon-red) !important;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(211, 55, 55, 0.3);
+}
+
+code {
+  color: var(--neon-light-cyan) !important;
+  text-shadow: 0 0 4px rgba(147, 228, 226, 0.5);
+}
+
+/* Cards/content borders */
+.card, [data-card] {
+  background-color: rgba(26, 14, 14, 0.6) !important;
+  border: 2px solid var(--neon-red) !important;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(211, 55, 55, 0.2);
+}
+
+/* Buttons */
+button, .button, [role='button'] {
+  background-color: transparent !important;
+  border: 2px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 8px var(--neon-cyan);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+button:hover, .button:hover, [role='button']:hover {
+  background-color: rgba(147, 228, 226, 0.1) !important;
+  box-shadow: 0 0 16px var(--neon-cyan);
+}
+
+/* Search input */
+input[type='search'],
+input[type='text'] {
+  background-color: rgba(26, 14, 14, 0.8) !important;
+  border: 1px solid var(--neon-cyan) !important;
+  color: var(--neon-light-cyan) !important;
+}
+
+input[type='search']::placeholder,
+input[type='text']::placeholder {
+  color: rgba(147, 228, 226, 0.5) !important;
+}
+
+/* Table styling */
+table {
+  border-color: var(--neon-red) !important;
+}
+
+th {
+  background-color: rgba(211, 55, 55, 0.2) !important;
+  color: var(--neon-light-cyan) !important;
+  border-color: var(--neon-red) !important;
+}
+
+td {
+  border-color: var(--neon-red) !important;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--neon-cyan);
+  background-color: rgba(147, 228, 226, 0.05);
+  box-shadow: inset 0 0 8px rgba(147, 228, 226, 0.1);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--neon-cyan);
+  color: var(--sl-color-bg-primary);
+  text-shadow: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--sl-color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--neon-red);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Astro starlight header */
+header {
+  background-color: var(--sl-color-bg-secondary) !important;
+  border-bottom: 2px solid var(--neon-red) !important;
+  box-shadow: 0 4px 12px rgba(211, 55, 55, 0.2);
+}
+
+header a {
+  color: var(--sl-color-white) !important;
+  text-shadow: 0 0 8px var(--neon-cyan);
+}

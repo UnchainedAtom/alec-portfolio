@@ -22,6 +22,7 @@ export default defineConfig({
         },
         { label: 'About', link: '/about/' },
       ],
+      customCss: ['./src/styles/neuronet-theme.css'],
     }),
   ],
 });

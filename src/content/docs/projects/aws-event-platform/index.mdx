@@ -1,0 +1,36 @@
+---
+title: AWS Event Microservices Platform
+description: Async job ingestion + worker processing with durability and failure isolation.
+---
+
+# AWS Event Microservices Platform
+
+**Repo:** https://github.com/UnchainedAtom/aws-event-microservices-platform
+
+## What it demonstrates
+
+- **Async processing**: requests return quickly while work happens later
+- **Durability**: jobs persist in SQS
+- **Failure isolation**: poison messages land in a **DLQ**
+- **Container ops**: worker image in **ECR**, runs on **ECS**
+- **Observability**: **CloudWatch logs** for Lambda + ECS tasks
+
+## Architecture (high level)
+
+API Gateway → Lambda (ingest) → SQS Queue (+ DLQ) → ECS Worker (polls & processes) → logs/metrics
+
+## Why this matters for game studio DevOps
+
+Reliable pipelines and services are built on the same ideas:
+queues, retries, idempotency, containerized workers, and actionable logs.
+
+## Run locally (quick)
+
+- Start the worker locally and point it at your SQS queue (env vars)
+- Use curl to POST jobs to your API endpoint
+
+## Notes / next improvements
+
+- Add structured logging (JSON logs)
+- Add metrics + alarms
+- Add IaC (Terraform) once stabilized

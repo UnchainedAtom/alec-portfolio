@@ -1,0 +1,26 @@
+---
+title: Projects
+description: AWS + DevOps labs and personal systems work.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+# Projects
+
+<CardGrid>
+  <LinkCard
+    title="AWS Event Microservices Platform"
+    href="/projects/aws-event-platform/"
+    description="API Gateway → Lambda → SQS (+ DLQ) → container worker on ECS (ECR images, CloudWatch logs)."
+  />
+  <LinkCard
+    title="Neurox Terminal"
+    href="/projects/neurox-terminal/"
+    description="Raspberry Pi / Home Assistant style home terminal concept (retro-futurist interface + automation control)."
+  />
+  <LinkCard
+    title="Neuronet"
+    href="/projects/neuronet/"
+    description="Personal app/platform work (system design + automation + reliability mindset)."
+  />
+</CardGrid>

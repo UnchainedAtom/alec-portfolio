@@ -1,33 +1,29 @@
-# Starlight Starter Kit: Basics
+# Alec Estrada - Portfolio
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Personal portfolio showcasing systems work, DevOps patterns, and software projects.
 
-```
-npm create astro@latest -- --template starlight
-```
+Built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Getting Started
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+npm install
+npm run dev
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+The site will be available at `http://localhost:4321/`
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Build
+
+```bash
+npm run build
+```
+
+## Projects
+
+- **AWS Event Microservices Platform** - Async job ingestion with durability and failure isolation
+- **Neurox Terminal** - Home terminal concept for automation and control
+- **Neuronet** - Personal platform exploring services and automation patterns
 
 Static assets, like favicons, can be placed in the `public/` directory.
 
@@ -44,6 +40,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).

@@ -5,30 +5,25 @@ description: Async job ingestion + worker processing with durability and failure
 
 **Repo:** https://github.com/UnchainedAtom/aws-event-microservices-platform
 
-## What it demonstrates
+## Overview
 
-- **Async processing**: requests return quickly while work happens later
-- **Durability**: jobs persist in SQS
-- **Failure isolation**: poison messages land in a **DLQ**
-- **Container ops**: worker image in **ECR**, runs on **ECS**
-- **Observability**: **CloudWatch logs** for Lambda + ECS tasks
+A cloud-native asynchronous processing platform built on AWS.
 
-## Architecture (high level)
+Incoming client requests are validated by an API Gateway + Lambda ingestion layer. Jobs are enqueued into an SQS queue with a dead-letter queue (DLQ) configured. Containerized Python workers deployed on AWS ECS Fargate poll the queue, process jobs, and emit structured logs to CloudWatch.
 
-API Gateway → Lambda (ingest) → SQS Queue (+ DLQ) → ECS Worker (polls & processes) → logs/metrics
+This architecture emphasizes reliability with:
+- at-least-once delivery semantics,
+- visibility timeout-safe processing,
+- poison message quarantine in a DLQ,
+- and clear observability into success or failure paths.
 
-## Why this matters for game studio DevOps
+## Tech Stack
+- AWS: API Gateway, Lambda, SQS, DLQ, ECS Fargate, ECR, CloudWatch
+- Python, boto3, Docker
+- CI/CD (image build + deployment pipeline)
 
-Reliable pipelines and services are built on the same ideas:
-queues, retries, idempotency, containerized workers, and actionable logs.
-
-## Run locally (quick)
-
-- Start the worker locally and point it at your SQS queue (env vars)
-- Use curl to POST jobs to your API endpoint
-
-## Notes / next improvements
-
-- Add structured logging (JSON logs)
-- Add metrics + alarms
-- Add IaC (Terraform) once stabilized
+## Highlights
+- Designed and deployed resilient AWS infrastructure for job queuing and background workers
+- Workers implement idempotency and safe delete-after-success
+- Operational logs and metrics centralized in CloudWatch for troubleshooting
+- Demonstrates infra-level responsibility expected in real DevOps workflows
